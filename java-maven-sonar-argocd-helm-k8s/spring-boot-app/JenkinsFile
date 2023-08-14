@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "Jenkins-Zero-To-Hero "
+            GIT_REPO_NAME = "Jenkins"
             GIT_USER_NAME = "niveditapa21"
         }
         steps {
@@ -62,6 +62,17 @@ pipeline {
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                 '''
             }
+        }
+     stage('kubernetes') {
+             agent {
+                 label 'kube-master'
+            } 
+             
+            steps {
+                
+                sh 'sudo kubectl create -f deploy.yml'
+                sh 'sudo kubectl create -f svc.yml'
+            } 
         }
     }
   }
