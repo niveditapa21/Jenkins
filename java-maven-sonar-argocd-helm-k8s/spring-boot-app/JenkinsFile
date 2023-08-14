@@ -70,8 +70,8 @@ pipeline {
              
             steps {
                 
-                sh 'sudo kubectl create -f deploy.yml'
-                sh 'sudo kubectl create -f svc.yml'
+                sh 'sudo kubectl create -f deployment.yml'
+                sh 'sudo kubectl create -f service.yml'
             } 
         }
     }
