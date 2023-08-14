@@ -68,7 +68,7 @@ pipeline {
                  label 'kube'
             } 
              
-            steps {
+        steps {
                 git'https://github.com/niveditapa21/Jenkins/java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests'
                 sh 'sudo kubectl create -f deployment.yml'
                 sh 'sudo kubectl create -f service.yml'
