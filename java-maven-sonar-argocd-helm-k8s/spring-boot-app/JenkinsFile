@@ -65,11 +65,11 @@ pipeline {
         }
      stage('kubernetes') {
              agent {
-                 label 'kube-master'
+                 label 'kube'
             } 
              
             steps {
-                
+                git'https://github.com/niveditapa21/Jenkins/java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests'
                 sh 'sudo kubectl create -f deployment.yml'
                 sh 'sudo kubectl create -f service.yml'
             } 
